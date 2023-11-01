@@ -1,0 +1,10 @@
+app:
+  server: "http://206.189.81.8:8000"
+  feeder: "http://localhost:9000"
+  debug: true
+
+ignore:
+  - "public"
+  - "cache"
+  - "build"
+  - "some-custom"
