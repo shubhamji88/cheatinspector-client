@@ -30,20 +30,19 @@ func main() {
 	var UserDevice device.Device
 
 	notFound, deviceInfo := device.GetDeviceDetailAPI(userDeviceInfo.MachineID)
-	teamOperation := team.CreateOrJoinTeamScreen()
-	if teamOperation == "create" {
-		teamDetails := team.CreateTeamScreen()
-		teamAPIResponse := team.CreateTeamAPI(teamDetails)
-		UserTeam = teamAPIResponse
-	} else {
-		teamDetails := team.JoinTeamScreen()
-		teamAPIResponse := team.GetTeamDetailAPI(teamDetails.TeamID)
-		UserTeam = teamAPIResponse
-	}
 	//  if not found, then initiate login process
 	if notFound == true {
 		//register or join a team
-
+		teamOperation := team.CreateOrJoinTeamScreen()
+		if teamOperation == "create" {
+			teamDetails := team.CreateTeamScreen()
+			teamAPIResponse := team.CreateTeamAPI(teamDetails)
+			UserTeam = teamAPIResponse
+		} else {
+			teamDetails := team.JoinTeamScreen()
+			teamAPIResponse := team.GetTeamDetailAPI(teamDetails.TeamID)
+			UserTeam = teamAPIResponse
+		}
 
 		fmt.Println("\nDevice not registered on cheatInspector, registration in process...")
 		deviceDetails := device.CreateTeamScreen()
